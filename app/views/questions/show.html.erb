@@ -1,0 +1,24 @@
+
+<h3><%= @question.title %></h3>
+
+<pre><%= @question.body %></pre>
+
+<p>Asked by: <%= @question.user.email %></p>
+
+<% if @question.answers.any? %>
+	<h3><%= @question.answers.size %> Answers</h3>
+
+	<% @question.answers.each do |answer| %>
+		<textarea readonly="readonly"><%= answer.body %></textarea>
+		<p>Answered by: <%= answer.user.email %></p>
+	<% end %>
+<% end %>
+
+<h3>Your Answer</h3>
+
+<%= form_for [@question, @question.answers.build] do |f| %>
+	<%= f.hidden_field :question_id, value: @question.id %>
+	<%= f.text_area :body %>
+
+	<%= f.submit %>
+<% end %>

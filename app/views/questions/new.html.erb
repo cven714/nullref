@@ -1,0 +1,14 @@
+<h3>New</h3>
+
+<%= form_for @question, action: 'create' do |f| %>
+	<p>
+		Title
+		<%= f.text_field :title %>
+	</p>
+	<p>
+		Body
+		<%= f.text_area :body %>
+	</p>
+
+	<%= f.submit value: "Submit" %>
+<% end %>

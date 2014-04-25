@@ -1,0 +1,12 @@
+
+<div>
+<%= link_to "Ask a question", new_question_path %>
+</div>
+
+<div>
+	<ul>
+		<% @questions.each do |q| %>
+			<li><%= link_to q.title, question_path(q.id) %></li>
+		<% end %>
+	</ul>
+</div>
